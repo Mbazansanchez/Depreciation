@@ -1,0 +1,77 @@
+﻿<Window x:Class="Depreciation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Depreciation"
+        mc:Ignorable="d"
+        Title="Super depreciation calculator 3001" Height="450" Width="650">
+    <Grid>
+        <TabControl Margin="10,31,10,10">
+            <TabItem Header="How to use this application">
+                <StackPanel MaxWidth="350" HorizontalAlignment="Center">
+                    <Label Content="Super Depreciation Calculator 3001" FontWeight="Bold" FontSize="20" Margin="0,0,0,50"/>
+                    <Border BorderThickness="1" BorderBrush="Black">
+                    <TextBlock 
+                           TextWrapping="WrapWithOverflow"
+                           HorizontalAlignment="Center">
+ Welcome to Super Depreciation Calculator 3001. Enter your inventory in the inventory tab.
+Then go to summary tab to find the value of your inventory.
+
+                    </TextBlock>
+                    </Border>
+                </StackPanel>
+            </TabItem>
+            
+            <TabItem Header="Inventory">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Width="250">
+                        <ListBox Height="300" Margin="0,10,0,10" Name="List_Items" MouseDoubleClick="List_Items_MouseDoubleClick" />
+                        <Button Name="Remove" Content="Remove Selected Item From Inventory" Click="Remove_Click"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Center">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width = "Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height = "*" />
+                                <RowDefinition Height = "*" />
+                                <RowDefinition Height = "*" />
+                                <RowDefinition Height = "*" />
+                                <RowDefinition Height = "*" />
+                                <RowDefinition Height = "*" />
+                            </Grid.RowDefinitions>
+                            <Label Content="Title" Grid.Row="0" Grid.Column="0" />
+                            <Label Content="Starting Value $" Grid.Row="1" Grid.Column="0" />
+                            <Label Content="End Value $" Grid.Row="2" Grid.Column="0" />
+                            <Label Content="Lifetime (years)" Grid.Row="3" Grid.Column="0" />
+                            <Label Content="Date in inventory" Grid.Row="4" Grid.Column="0" />
+                            <Label Content="Date out of inventory" Grid.Row="5" Grid.Column="0" />
+
+                            <TextBox x:Name="Input_Title" Grid.Row="0" Grid.Column="1" Width="200"/>
+                            <TextBox x:Name="Input_StartValue" Grid.Row="1" Grid.Column="1" Width="200"/>
+                            <TextBox x:Name="Input_EndValue" Grid.Row="2" Grid.Column="1" Width="200"/>
+                            <TextBox x:Name="Input_Lifetime" Grid.Row="3" Grid.Column="1" Width="200"/>
+                            <DatePicker x:Name="Input_DateIn" Grid.Row="4" Grid.Column="1" Width="200"/>
+                            <DatePicker x:Name="Input_DateOut" Grid.Row="5" Grid.Column="1" Width="200"/>
+                        </Grid>
+                        <RadioButton Name="Radio_StraightLine" Checked="StraightLine_Checked"  IsChecked="True" Margin="40, 10" GroupName="Radio_DepreciacionType">Straight Line</RadioButton>
+                        <RadioButton Name="Radio_DoubleDeclining" Checked="DoubleDeclining_Checked" Margin="40, 0" GroupName="Radio_DepreciacionType">Double declining</RadioButton>
+                        <Button Width="200" Margin="30" HorizontalAlignment="Center" x:Name="Button_Add" Content="Add Form Item To Inventory" Click="Button_Add_Click"/>
+                    </StackPanel>
+                </StackPanel>    
+            </TabItem>
+            
+            <TabItem Header="Summary">
+                <StackPanel HorizontalAlignment="Center" Margin="70">
+                    <Button Width="200" Name="Button_Calculate" Content="Calculate inventory Value" Click="Button_Calculate_Click"/>
+                    <Label HorizontalAlignment="Center" Name="Label_CalculatedValue" Margin="20" />
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
